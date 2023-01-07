@@ -1,0 +1,72 @@
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  /* visibility: hidden; */
+}
+.cards {
+  width: 70%;
+  position: relative;
+  height: 60vh;
+  border: 1px solid rebeccapurple;
+  margin: 0 auto;
+  margin-top: 4rem;
+  /* visibility: visible; */
+}
+.card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  gap: 5rem;
+  background-color: rgba(32, 178, 88, 0.475);
+}
+.left {
+  /* display: none; */
+  left: -100%;
+  background-color: blue;
+  visibility: hidden;
+}
+.right {
+  /* display: none; */
+  left: 100%;
+  visibility: hidden;
+  background-color: blueviolet;
+}
+.current {
+  visibility: visible;
+}
+.move-right {
+  animation: moveRight 1s linear;
+}
+.btns {
+  margin: 0 auto;
+  margin-top: 2rem;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.btn-con {
+  display: flex;
+  justify-content: space-between;
+}
+@keyframes moveRight {
+  0% {
+    left: 0;
+  }
+  99% {
+    left: 100%;
+  }
+  100% {
+    display: none;
+  }
+}
