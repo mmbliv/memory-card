@@ -31,11 +31,19 @@ export class Memory {
         });
         // console.log(this.cardsNode);
         this.currentCard = this.cards[0];
+        this.leftCards = this.cards.slice(1);
+        console.log(this.leftCards);
         this.cardsNode.appendChild(this.cards[0]);
         return this.cards;
     }
+    generateRandomIndex() {
+        const length = this.cards.length;
+        return Math.floor(Math.random() * length);
+    }
     moveRight() {
         // this.cardsNode.classList.add("move-right");
+        if (!this.leftCards.length) {
+        }
         this.currentCard.classList.add("move-right");
     }
 }
