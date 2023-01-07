@@ -31,10 +31,11 @@ export class Memory {
         });
         // console.log(this.cardsNode);
         this.currentCard = this.cards[0];
-        this.currentNode.appendChild(this.cards[0]);
+        this.cardsNode.appendChild(this.cards[0]);
         return this.cards;
     }
     moveRight() {
-        this.cardsNode.classList.add("move-right");
+        // this.cardsNode.classList.add("move-right");
+        this.currentCard.classList.add("move-right");
     }
 }
