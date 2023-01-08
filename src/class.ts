@@ -81,6 +81,7 @@ export class Memory {
     this.leftNode.append(node);
   }
   async moveRight() {
+    this.currentCard.children[1].classList.remove("show");
     this.currentCard.classList.remove("m-a");
     this.currentCard.classList.add("m-b");
     await this.await(0.2);
@@ -111,5 +112,9 @@ export class Memory {
     return new Promise(function (res) {
       setTimeout(res, sec * 1000);
     });
+  }
+  showAnswer() {
+    this.currentCard.children[1].classList.add("show");
+    // console.dir(this.currentCard);
   }
 }

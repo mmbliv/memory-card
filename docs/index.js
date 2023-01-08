@@ -7,6 +7,7 @@ const current = document.querySelector(".current");
 const memory = new Memory(cardsData, cards, left, right, current);
 const nextBtn = document.querySelector(".next");
 const check = document.querySelector(".checked");
+const answer = document.querySelector(".answer-js");
 memory.buildCards();
 nextBtn.addEventListener("click", function () {
     console.log("k");
@@ -14,4 +15,7 @@ nextBtn.addEventListener("click", function () {
 });
 check.addEventListener("click", function () {
     memory.checkTheCard();
+});
+answer.addEventListener("click", function () {
+    memory.showAnswer();
 });
