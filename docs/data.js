@@ -1,26 +1,26 @@
 export const cardsData = [
     {
         checked: false,
-        answer: "answer",
-        name: "question1",
-        content: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia dolores architecto commodi odit eos et, quis culpa repellendus rem laboriosam quas dolorem explicabo consequuntur iste facilis adipisci ex ad assumenda!",
+        answer: "isNan function returns true if the argument is not a number; otherwise, it is false.",
+        name: "JavaScript Interview Questions ",
+        content: " What is the use of isNaN function?",
     },
     {
         checked: false,
-        answer: "answer",
-        name: "question2",
-        content: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia dolores architecto commodi odit eos et, quis culpa repellendus rem laboriosam quas dolorem explicabo consequuntur iste facilis adipisci ex ad assumenda!",
+        answer: "Negative Infinity is a number in JavaScript which can be derived by dividing negative number by zero.",
+        name: "JavaScript Interview Questions ",
+        content: "What is negative Infinity?",
     },
     {
         checked: false,
-        answer: "answer",
-        name: "question3",
-        content: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia dolores architecto commodi odit eos et, quis culpa repellendus rem laboriosam quas dolorem explicabo consequuntur iste facilis adipisci ex ad assumenda!",
+        answer: "Breaking within a string statement can be done by using a backslash, ‘,’ at the end of the first line.",
+        name: "JavaScript Interview Questions ",
+        content: "Is it possible to break JavaScript Code into several lines?",
     },
     {
         checked: false,
-        answer: "answer",
-        name: "question4",
-        content: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia dolores architecto commodi odit eos et, quis culpa repellendus rem laboriosam quas dolorem explicabo consequuntur iste facilis adipisci ex ad assumenda!",
+        answer: "‘This’ keyword refers to the object from where it was called.",
+        name: "JavaScript Interview Questions ",
+        content: "What is ‘this’ keyword in JavaScript?",
     },
 ];

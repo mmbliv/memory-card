@@ -43,7 +43,7 @@ export class Memory {
   }
   buildCardHTML(name: string, content: string, answer: string) {
     return `<div class="card_question">
-            <p class="title">${name}</p>
+            <h2 class="title">${name}</h2>
             <p class="content">
             ${content}
             </p>
@@ -147,5 +147,8 @@ export class Memory {
     const answer = this.inputAnswer.value;
     this.buildWrapper(title, content, answer);
     this.showTotalCardsCount();
+    this.inputAnswer.value = "";
+    this.inputContent.value = "";
+    this.inputTitle.value = "";
   }
 }
