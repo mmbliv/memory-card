@@ -1,10 +1,10 @@
 import { Memory } from "./class.js";
 import { cardsData } from "./data.js";
 const cards = document.querySelector(".cards");
+const totalCardsCount = document.querySelector(".total-cards");
+const checkedCardsCount = document.querySelector(".checked-cards");
 const left = document.querySelector(".left-container");
-const right = document.querySelector(".right");
-const current = document.querySelector(".current");
-const memory = new Memory(cardsData, cards, left, right, current);
+const memory = new Memory(cardsData, cards, left, totalCardsCount, checkedCardsCount);
 const nextBtn = document.querySelector(".next");
 const check = document.querySelector(".checked");
 const answer = document.querySelector(".answer-js");

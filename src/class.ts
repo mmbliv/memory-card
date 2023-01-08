@@ -8,36 +8,25 @@ export class Memory {
   public cardsNode: HTMLDivElement;
   public currentCard: HTMLDivElement;
   public leftCards: HTMLDivElement[];
-  public rightCards: HTMLDivElement[];
   public cards: HTMLDivElement[];
   public leftNode: HTMLDivElement;
-  public rightNode: HTMLDivElement;
-  public currentNode: HTMLDivElement;
-  public checked: boolean;
-  public currentCardData: {
-    name: string;
-    content: string;
-    answer: string;
-    checked: boolean;
-  };
+  public totalCardsCountNode: HTMLSpanElement;
+  public checkedCardsCountNode: HTMLSpanElement;
   constructor(
     data: { name: string; content: string; answer: string; checked: boolean }[],
     cardsNode: HTMLDivElement,
     leftNode: HTMLDivElement,
-    rightNode: HTMLDivElement,
-    currentNode: HTMLDivElement
+    totalCardsCountNode: HTMLSpanElement,
+    checkedCardsCountNode: HTMLSpanElement
   ) {
     this.data = data;
     this.cardsNode = cardsNode;
     this.cards = [];
     this.currentCard = this.cards[0];
     this.leftCards = [];
-    this.rightCards = [];
     this.leftNode = leftNode;
-    this.rightNode = rightNode;
-    this.currentNode = currentNode;
-    this.checked = false;
-    this.currentCardData = this.data[0];
+    this.totalCardsCountNode = totalCardsCountNode;
+    this.checkedCardsCountNode = checkedCardsCountNode;
     // this.cardsNode.appendChild(this.cards)
   }
   buildCardHTML(name: string, content: string, answer: string) {
@@ -68,6 +57,7 @@ export class Memory {
 
     this.currentCard = this.leftCards[0];
     this.currentCard.classList.add("m-a");
+    this.showTotalCardsCount();
     console.log(this.leftCards);
     // this.cardsNode.appendChild(this.cards[0]);
     return this.cards;
@@ -107,6 +97,7 @@ export class Memory {
     this.leftCards = this.leftCards.filter((card) => {
       return card.dataset.checked === "false";
     });
+    this.showCheckedCardsCount();
   }
   await(sec: number) {
     return new Promise(function (res) {
@@ -116,5 +107,13 @@ export class Memory {
   showAnswer() {
     this.currentCard.children[1].classList.add("show");
     // console.dir(this.currentCard);
+  }
+  showTotalCardsCount() {
+    this.totalCardsCountNode.textContent = this.cards.length.toString();
+  }
+  showCheckedCardsCount() {
+    this.checkedCardsCountNode.textContent = (
+      this.cards.length - this.leftCards.length
+    ).toString();
   }
 }

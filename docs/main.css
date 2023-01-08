@@ -11,6 +11,13 @@ body {
 }
 main {
   /* visibility: visible; */
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+}
+.side {
+  height: 100vh;
+  /* width: 20%; */
+  border: 1px solid goldenrod;
 }
 .cards {
   width: 70%;
