@@ -21,9 +21,10 @@ main {
   margin-top: 4rem;
   overflow: hidden;
   /* visibility: visible; */
+  background-color: blanchedalmond;
 }
 .card {
-  /* position: absolute; */
+  position: absolute;
   /* position: relative; */
   width: 100%;
   height: 100%;
@@ -63,6 +64,14 @@ main {
 
   transition: all 1s ease-in;
 }
+.m-a {
+  animation: moveRight-1 1s forwards ease-in-out;
+  /* animation-delay: 1s; */
+}
+.m-b {
+  animation: moveRight-2 0.2s forwards;
+  /* animation-delay: 1s; */
+}
 .btns {
   margin: 0 auto;
   margin-top: 2rem;
@@ -74,4 +83,25 @@ main {
 .btn-con {
   display: flex;
   justify-content: space-between;
+}
+@keyframes moveRight-1 {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
+}
+@keyframes moveRight-2 {
+  0% {
+    /* display: block; */
+    left: 100%;
+  }
+  99% {
+    left: 200%;
+  }
+  100% {
+    /* display: none; */
+    left: -100%;
+  }
 }

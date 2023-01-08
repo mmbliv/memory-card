@@ -42,14 +42,15 @@ export class Memory {
             //   this.cardsNode.appendChild(wrapper);
         });
         // console.log(this.cardsNode);
-        this.currentCard = this.cards[0];
-        this.leftCards = this.cards.slice(1);
+        this.leftCards = this.cards;
         this.leftCards.forEach((card) => {
             card.classList.add("left-card");
             this.leftNode.appendChild(card);
         });
+        this.currentCard = this.leftCards[0];
+        this.currentCard.classList.add("m-a");
         console.log(this.leftCards);
-        this.cardsNode.appendChild(this.cards[0]);
+        // this.cardsNode.appendChild(this.cards[0]);
         return this.cards;
     }
     generateRandomIndex() {
@@ -67,20 +68,28 @@ export class Memory {
             // await this.await(0.1);
             // this.currentCard.classList.remove("move-right");
             // await this.await(0.1);
-            console.log(this.currentCard, "aaaa");
-            this.currentCard.classList.remove("move-right");
-            yield this.await(0.1);
-            this.currentCard.classList.add("move-right");
+            // console.log(this.currentCard, "aaaa");
+            // this.currentCard.classList.remove("move-right");
             // await this.await(0.1);
-            // await this.await(1);
+            // this.currentCard.classList.remove("m-b");
+            // this.currentCard.classList.remove("m-a");
+            // this.currentCard.classList.add("move-right");
+            // await this.await(0.1);
+            this.currentCard.classList.remove("m-a");
+            this.currentCard.classList.add("m-b");
+            yield this.await(0.2);
+            // await this.await(0.5);
             const randomIndex = this.generateRandomIndex();
-            this.leftCards[randomIndex].classList.add("move-right");
+            // this.leftCards[randomIndex].classList.add("move-right");
+            console.log(this.leftCards);
+            this.leftCards[randomIndex].classList.add("m-a");
             // console.log(this.leftCards[randomIndex]);
-            yield this.await(1.1);
+            // await this.await(1.1);
             // console.dir(this.cardsNode);
             // console.log(this.cardsNode);
             // console.log(this.cardsNode.children[1]);
             // console.dir(this.cardsNode);
+            this.currentCard.classList.remove("m-b");
             if (this.cardsNode.children.length > 1) {
                 console.log(this.cardsNode.children.length);
                 this.cardsNode.removeChild(this.cardsNode.children[1]);
@@ -88,8 +97,8 @@ export class Memory {
             // await this.await(1);
             // this.currentCard.classList.remove("move-right");
             // this.currentCard.classList.remove("move-right-2");
-            // this.leftCards[randomIndex].classList.remove("move-right");
-            this.currentCard.classList.add("move-back");
+            // this.leftCards[randomIndex].classList.remove("m-a");
+            // this.currentCard.classList.add("move-back");
             // console.log(this.cardsNode);
             console.log(this.currentCard);
             this.currentCard = this.leftCards[randomIndex];
@@ -98,7 +107,7 @@ export class Memory {
             //   this.leftCards.push(this.currentCard);
             // }
             this.leftCards = this.leftCards.filter((card) => {
-                return card.dataset.checked === "false" && card !== this.currentCard;
+                return card.dataset.checked === "false";
             });
             // console.log(this.cardsNode);
         });
