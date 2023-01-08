@@ -14,7 +14,7 @@ main {
 }
 .cards {
   width: 70%;
-  /* position: relative; */
+  position: relative;
   height: 60vh;
   border: 1px solid rebeccapurple;
   margin: 0 auto;
@@ -35,9 +35,32 @@ main {
   gap: 5rem;
   background-color: rgba(32, 178, 88, 0.475);
 }
-
+.left-container {
+  /* position: relative; */
+  position: absolute;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+  /* visibility: hidden; */
+}
+.left-card {
+  position: absolute;
+  /* translate: 90%;
+  transition: all 1s linear; */
+}
 .move-right {
   translate: 100%;
+  transition: all 1s ease-in;
+  /* transition-; */
+}
+.move-back {
+  left: -200%;
+}
+.move-right-2 {
+  translate: 200%;
+  transition: all 1s ease-in;
+
   transition: all 1s ease-in;
 }
 .btns {
