@@ -14,10 +14,20 @@ main {
   display: grid;
   grid-template-columns: 3fr 7fr;
 }
-.side {
+.side-container {
   height: 100vh;
   /* width: 20%; */
   border: 1px solid goldenrod;
+}
+.side-content {
+  padding: 1rem;
+}
+form {
+  gap: 1rem;
+}
+.flex {
+  display: flex;
+  flex-direction: column;
 }
 .cards {
   width: 70%;

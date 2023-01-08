@@ -18,6 +18,12 @@ const memory = new Memory(
 const nextBtn = document.querySelector(".next")! as HTMLDivElement;
 const check = document.querySelector(".checked")! as HTMLDivElement;
 const answer = document.querySelector(".answer-js")! as HTMLDivElement;
+const submit = document.querySelector(".submit-js")! as HTMLInputElement;
+const title = document.querySelector(".title-js")! as HTMLInputElement;
+const content = document.querySelector(".content-js")! as HTMLInputElement;
+const answerInput = document.querySelector(
+  ".answer-input-js"
+)! as HTMLInputElement;
 memory.buildCards();
 nextBtn.addEventListener("click", function () {
   console.log("k");
@@ -28,4 +34,8 @@ check.addEventListener("click", function () {
 });
 answer.addEventListener("click", function () {
   memory.showAnswer();
+});
+submit.addEventListener("click", function (e) {
+  e.preventDefault();
+  console.log(title.value, answerInput.value, content.value);
 });
