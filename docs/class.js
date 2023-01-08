@@ -63,18 +63,6 @@ export class Memory {
     }
     moveRight() {
         return __awaiter(this, void 0, void 0, function* () {
-            // this.cardsNode.classList.add("move-right");
-            // this.currentCard.classList.remove("move-right");
-            // await this.await(0.1);
-            // this.currentCard.classList.remove("move-right");
-            // await this.await(0.1);
-            // console.log(this.currentCard, "aaaa");
-            // this.currentCard.classList.remove("move-right");
-            // await this.await(0.1);
-            // this.currentCard.classList.remove("m-b");
-            // this.currentCard.classList.remove("m-a");
-            // this.currentCard.classList.add("move-right");
-            // await this.await(0.1);
             this.currentCard.classList.remove("m-a");
             this.currentCard.classList.add("m-b");
             yield this.await(0.2);
@@ -83,37 +71,21 @@ export class Memory {
             // this.leftCards[randomIndex].classList.add("move-right");
             console.log(this.leftCards);
             this.leftCards[randomIndex].classList.add("m-a");
-            // console.log(this.leftCards[randomIndex]);
-            // await this.await(1.1);
-            // console.dir(this.cardsNode);
-            // console.log(this.cardsNode);
-            // console.log(this.cardsNode.children[1]);
-            // console.dir(this.cardsNode);
             this.currentCard.classList.remove("m-b");
             if (this.cardsNode.children.length > 1) {
                 console.log(this.cardsNode.children.length);
                 this.cardsNode.removeChild(this.cardsNode.children[1]);
             }
-            // await this.await(1);
-            // this.currentCard.classList.remove("move-right");
-            // this.currentCard.classList.remove("move-right-2");
-            // this.leftCards[randomIndex].classList.remove("m-a");
-            // this.currentCard.classList.add("move-back");
-            // console.log(this.cardsNode);
             console.log(this.currentCard);
             this.currentCard = this.leftCards[randomIndex];
             console.log(this.currentCard);
-            // if ((this.currentCard.dataset.checked = "false")) {
-            //   this.leftCards.push(this.currentCard);
-            // }
-            this.leftCards = this.leftCards.filter((card) => {
-                return card.dataset.checked === "false";
-            });
-            // console.log(this.cardsNode);
         });
     }
     checkTheCard() {
         this.currentCard.dataset.checked = "true";
+        this.leftCards = this.leftCards.filter((card) => {
+            return card.dataset.checked === "false";
+        });
     }
     await(sec) {
         return new Promise(function (res) {
