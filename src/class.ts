@@ -12,12 +12,20 @@ export class Memory {
   public leftNode: HTMLDivElement;
   public totalCardsCountNode: HTMLSpanElement;
   public checkedCardsCountNode: HTMLSpanElement;
+  public submit: HTMLInputElement;
+  public inputTitle: HTMLInputElement;
+  public inputContent: HTMLInputElement;
+  public inputAnswer: HTMLInputElement;
   constructor(
     data: { name: string; content: string; answer: string; checked: boolean }[],
     cardsNode: HTMLDivElement,
     leftNode: HTMLDivElement,
     totalCardsCountNode: HTMLSpanElement,
-    checkedCardsCountNode: HTMLSpanElement
+    checkedCardsCountNode: HTMLSpanElement,
+    submit: HTMLInputElement,
+    inputTitle: HTMLInputElement,
+    inputContent: HTMLInputElement,
+    inputAnswer: HTMLInputElement
   ) {
     this.data = data;
     this.cardsNode = cardsNode;
@@ -27,6 +35,10 @@ export class Memory {
     this.leftNode = leftNode;
     this.totalCardsCountNode = totalCardsCountNode;
     this.checkedCardsCountNode = checkedCardsCountNode;
+    this.submit = submit;
+    this.inputTitle = inputTitle;
+    this.inputContent = inputContent;
+    this.inputAnswer = inputAnswer;
     // this.cardsNode.appendChild(this.cards)
   }
   buildCardHTML(name: string, content: string, answer: string) {
@@ -38,22 +50,33 @@ export class Memory {
             </div>
             <div class="answer">${answer}</div>`;
   }
+  buildWrapper(name: string, content: string, answer: string) {
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("card");
+    wrapper.classList.add("left-card");
+    wrapper.setAttribute("data-checked", "false");
+    const html = this.buildCardHTML(name, content, answer);
+    wrapper.innerHTML = html;
+    this.cards.push(wrapper);
+    this.leftNode.appendChild(wrapper);
+  }
   buildCards() {
     this.data.forEach((d) => {
-      const wrapper = document.createElement("div");
-      wrapper.classList.add("card");
-      wrapper.setAttribute("data-checked", "false");
-      const html = this.buildCardHTML(d.name, d.content, d.answer);
-      wrapper.innerHTML = html;
-      this.cards.push(wrapper);
+      // const wrapper = document.createElement("div");
+      // wrapper.classList.add("card");
+      // wrapper.classList.add("left-card");
+      // wrapper.setAttribute("data-checked", "false");
+      // const html = this.buildCardHTML(d.name, d.content, d.answer);
+      // wrapper.innerHTML = html;
+      // this.cards.push(wrapper);
       //   this.cardsNode.appendChild(wrapper);
+      this.buildWrapper(d.name, d.content, d.answer);
     });
     // console.log(this.cardsNode);
     this.leftCards = this.cards;
-    this.leftCards.forEach((card) => {
-      card.classList.add("left-card");
-      this.leftNode.appendChild(card);
-    });
+    // this.leftCards.forEach((card) => {
+    //   this.leftNode.appendChild(card);
+    // });
 
     this.currentCard = this.leftCards[0];
     this.currentCard.classList.add("m-a");
@@ -71,6 +94,7 @@ export class Memory {
     this.leftNode.append(node);
   }
   async moveRight() {
+    // console.log(this.currentCard);
     this.currentCard.children[1].classList.remove("show");
     this.currentCard.classList.remove("m-a");
     this.currentCard.classList.add("m-b");
@@ -79,7 +103,7 @@ export class Memory {
     // await this.await(0.5);
     const randomIndex = this.generateRandomIndex();
     // this.leftCards[randomIndex].classList.add("move-right");
-    console.log(this.leftCards);
+    // console.log(this.leftCards);
     this.leftCards[randomIndex].classList.add("m-a");
 
     this.currentCard.classList.remove("m-b");
@@ -88,9 +112,9 @@ export class Memory {
       this.cardsNode.removeChild(this.cardsNode.children[1]);
     }
 
-    console.log(this.currentCard);
+    // console.log(this.currentCard);
     this.currentCard = this.leftCards[randomIndex];
-    console.log(this.currentCard);
+    console.log(this.currentCard, "ccccccc");
   }
   checkTheCard() {
     this.currentCard.dataset.checked = "true";
@@ -115,5 +139,13 @@ export class Memory {
     this.checkedCardsCountNode.textContent = (
       this.cards.length - this.leftCards.length
     ).toString();
+  }
+  addCard(e: Event) {
+    e.preventDefault();
+    const title = this.inputTitle.value;
+    const content = this.inputContent.value;
+    const answer = this.inputAnswer.value;
+    this.buildWrapper(title, content, answer);
+    this.showTotalCardsCount();
   }
 }

@@ -8,13 +8,7 @@ const checkedCardsCount = document.querySelector(
   ".checked-cards"
 )! as HTMLSpanElement;
 const left = document.querySelector(".left-container")! as HTMLDivElement;
-const memory = new Memory(
-  cardsData,
-  cards,
-  left,
-  totalCardsCount,
-  checkedCardsCount
-);
+
 const nextBtn = document.querySelector(".next")! as HTMLDivElement;
 const check = document.querySelector(".checked")! as HTMLDivElement;
 const answer = document.querySelector(".answer-js")! as HTMLDivElement;
@@ -24,7 +18,20 @@ const content = document.querySelector(".content-js")! as HTMLInputElement;
 const answerInput = document.querySelector(
   ".answer-input-js"
 )! as HTMLInputElement;
+
+const memory = new Memory(
+  cardsData,
+  cards,
+  left,
+  totalCardsCount,
+  checkedCardsCount,
+  submit,
+  title,
+  content,
+  answerInput
+);
 memory.buildCards();
+
 nextBtn.addEventListener("click", function () {
   console.log("k");
   memory.moveRight();
@@ -36,6 +43,5 @@ answer.addEventListener("click", function () {
   memory.showAnswer();
 });
 submit.addEventListener("click", function (e) {
-  e.preventDefault();
-  console.log(title.value, answerInput.value, content.value);
+  memory.addCard(e);
 });
